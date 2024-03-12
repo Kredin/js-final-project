@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initialise() {
+  const buySellArea = document.querySelector("#buy-or-sell");
+  buySellArea.innerHTML = "";
+  let div = document.createElement("div");
+  div.setAttribute("id", "cards");
+  buySellArea.append(div);
+
   fetch("http://localhost:3000/0")
     .then((res) => res.json())
     .then((data) =>
@@ -53,6 +59,12 @@ function addEventListeners() {
   sellBtn.addEventListener("click", (e) => {
     e.preventDefault();
     createSellForm();
+  });
+
+  const buyBtn = document.querySelector("#buy-button");
+  buyBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    initialise();
   });
 }
 
