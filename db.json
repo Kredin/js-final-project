@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "image": "./assets/2012ForFalcon.jpg",
+        "name": "2012 Ford Falcon",
+        "kms": 100000,
+        "type": "Sedan",
+        "transmission": "Manual",
+        "fuel": "Petrol",
+        "price": "10000"
+    }
+]
