@@ -1,12 +1,37 @@
 [
+  [
     {
-        "id": 1,
-        "image": "./assets/2012ForFalcon.jpg",
-        "name": "2012 Ford Falcon",
-        "kms": 100000,
-        "type": "Sedan",
-        "transmission": "Manual",
-        "fuel": "Petrol",
-        "price": "10000"
+      "id": 1,
+      "image": "./assets/2012ForFalcon.jpg",
+      "name": "2012 Ford Falcon",
+      "kms": 400000,
+      "type": "Sedan",
+      "transmission": "Manual",
+      "fuel": "Petrol",
+      "price": "10000",
+      "description": "arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque nec nam aliquam sem et tortor consequat id porta nibh venenatis cras sed felis eget velit aliquet sagittis"
+    },
+    {
+      "id": 2,
+      "image": "./assets/2013JeepWrangler.jpg",
+      "name": "2013 Jeep Wrangler",
+      "kms": 350000,
+      "type": "4WD",
+      "transmission": "Manual",
+      "fuel": "Petrol",
+      "price": "30000",
+      "description": "lectus sit amet est placerat in egestas erat imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget felis eget nunc lobortis mattis aliquam faucibus purus in massa tempor"
+    },
+    {
+      "id": "87c1",
+      "image": "./assets/2017HoldenCommodore.jpg",
+      "name": "2017 Holden Commodore",
+      "kms": "250000",
+      "type": "Sedan",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "price": "22999",
+      "description": "aliquam ut porttitor leo a diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget felis eget nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac"
     }
+  ]
 ]
