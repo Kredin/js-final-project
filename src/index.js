@@ -298,19 +298,33 @@ function filterCars(cars) {
     maxPrice = 9999999;
   }
 
-  const typeFiltered = cars.filter((car) => {
-    if (typeSelect === "Any") {
-      return car;
-    } else {
-      return car.type === typeSelect;
-    }
-  });
+  minPrice = parseInt(minPrice);
+  maxPrice = parseInt(maxPrice);
 
-  const priceFiltered = typeFiltered.filter((car) => {
-    return car.price >= minPrice && car.price <= maxPrice;
-  });
+  const typeFiltered = cars
+    .filter((car) => {
+      if (typeSelect === "Any") {
+        return car;
+      } else {
+        return car.type === typeSelect;
+      }
+    })
+    .filter((car) => {
+      let intPrice = parseInt(car.price);
+      return intPrice >= minPrice && intPrice <= maxPrice;
+    })
+    .forEach((car) => {
+      createCards(car);
+    });
 
-  priceFiltered.forEach((car) => {
-    createCards(car);
-  });
+  // const priceFiltered = typeFiltered.filter((car) => {
+  //   console.log(car);
+  //   console.log(minPrice, maxPrice, car.price);
+  //   let intPrice = parseInt(car.price);
+  //   return intPrice >= minPrice && intPrice <= maxPrice;
+  // });
+
+  // priceFiltered.forEach((car) => {
+  //   createCards(car);
+  // });
 }
