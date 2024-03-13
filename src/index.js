@@ -30,6 +30,9 @@ function createCards(car) {
   let h2Name = document.createElement("h2");
   h2Name.textContent = car.name;
 
+  let uldiv = document.createElement("div");
+  uldiv.setAttribute("id", "ul-div");
+
   let ul1 = document.createElement("ul");
   let liKm = document.createElement("li");
   liKm.textContent = `${car.kms}kms`;
@@ -44,13 +47,19 @@ function createCards(car) {
   liFuel.textContent = car.fuel;
   ul2.append(liTrans, liFuel);
 
+  uldiv.append(ul1, ul2);
+
   let h2Price = document.createElement("h2");
   h2Price.textContent = `$${car.price}`;
 
   let btn = document.createElement("button");
   btn.textContent = "View Details";
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    viewDetails(car);
+  });
 
-  div.append(img, h2Name, ul1, ul2, h2Price, btn);
+  div.append(img, h2Name, uldiv, h2Price, btn);
   cardsArea.append(div);
 }
 
@@ -65,6 +74,12 @@ function addEventListeners() {
   buyBtn.addEventListener("click", (e) => {
     e.preventDefault();
     initialise();
+  });
+
+  const filterBtn = document.querySelector("#filter-submit");
+  filterBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    fetchCars();
   });
 }
 
@@ -202,5 +217,100 @@ function submitSalesForm() {
       price: priceAmount,
       description: descr,
     }),
+  });
+}
+
+function viewDetails(car) {
+  const buySellArea = document.querySelector("#buy-or-sell");
+  buySellArea.innerHTML = "";
+
+  let div = document.createElement("div");
+  div.setAttribute("class", "detail-card");
+
+  let img = document.createElement("img");
+  img.setAttribute("src", car.image);
+
+  let h2Name = document.createElement("h2");
+  h2Name.textContent = car.name;
+
+  let uldiv = document.createElement("div");
+  uldiv.setAttribute("id", "ul-div");
+
+  let ul1 = document.createElement("ul");
+  let liKm = document.createElement("li");
+  liKm.textContent = `${car.kms}kms`;
+  let liType = document.createElement("li");
+  liType.textContent = car.type;
+  ul1.append(liKm, liType);
+
+  let ul2 = document.createElement("ul");
+  let liTrans = document.createElement("li");
+  liTrans.textContent = car.transmission;
+  let liFuel = document.createElement("li");
+  liFuel.textContent = car.fuel;
+  ul2.append(liTrans, liFuel);
+
+  uldiv.append(ul1, ul2);
+
+  let details = document.createElement("p");
+  details.textContent = car.description;
+
+  let h2Price = document.createElement("h2");
+  h2Price.textContent = `$${car.price}`;
+
+  let btn = document.createElement("button");
+  btn.textContent = "Buy Now";
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    buyCar(car);
+  });
+
+  div.append(img, h2Name, uldiv, details, h2Price, btn);
+  buySellArea.append(div);
+}
+
+function buyCar(car) {
+  fetch(`http://localhost:3000/0/${car.id}`, { method: "DELETE" });
+}
+
+function fetchCars() {
+  fetch("http://localhost:3000/0")
+    .then((res) => res.json())
+    .then((data) => filterCars(data));
+}
+
+function filterCars(cars) {
+  const buySellArea = document.querySelector("#buy-or-sell");
+  buySellArea.innerHTML = "";
+  let div = document.createElement("div");
+  div.setAttribute("id", "cards");
+  buySellArea.append(div);
+
+  const typeSelect = document.querySelector("#type-select").value;
+  let minPrice = document.querySelector("#min-price").value;
+  let maxPrice = document.querySelector("#max-price").value;
+
+  if (minPrice === "") {
+    minPrice = 0;
+  }
+
+  if (maxPrice === "") {
+    maxPrice = 9999999;
+  }
+
+  const typeFiltered = cars.filter((car) => {
+    if (typeSelect === "Any") {
+      return car;
+    } else {
+      return car.type === typeSelect;
+    }
+  });
+
+  const priceFiltered = typeFiltered.filter((car) => {
+    return car.price >= minPrice && car.price <= maxPrice;
+  });
+
+  priceFiltered.forEach((car) => {
+    createCards(car);
   });
 }

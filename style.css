@@ -8,14 +8,15 @@ header {
   text-align: center;
   padding: 10px;
   margin-top: 0;
-  border-bottom: 2px, solid, #ff9d00;
+  border-bottom: 2px, solid, #ff9200;
 }
 
 h1 {
-  color: #ff9d00;
+  color: #ff9200;
   font-size: 50px;
   padding: 0;
   font-weight: 900;
+  margin: 0;
 }
 
 #buy-sell-buttons {
@@ -50,6 +51,7 @@ h1 {
 
 .card h2 {
   margin: 0;
+  padding: 0;
   font-size: 20px;
 }
 
@@ -60,11 +62,20 @@ h1 {
 }
 
 .card ul {
+  margin: 0;
+}
+
+#ul-div {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
+  text-align: left;
+}
+
+#ul-div ul {
+  width: 85px;
 }
 
 #buy-or-sell {
@@ -86,4 +97,20 @@ h1 {
 .sale-form form input {
   width: 292px;
   margin-bottom: 5px;
+}
+
+.detail-card {
+  background-color: #646464;
+  max-width: 600px;
+  text-align: center;
+  width: 100%;
+  text-align: center;
+  border-radius: 12px;
+  margin: 10px;
+  padding: 0;
+}
+
+.detail-card img {
+  max-width: 600px;
+  width: 100%;
 }
